@@ -8,10 +8,14 @@ jobs:
     build:
         runs-on: windows-latest
         steps:
+
+        - name: login to Docker Hub
+          uses: docker/login-action@v3
+          with:
+            username: ${{ secrets.DOCKER_PASS }}
+            password: ${{ secrets.DOCKER_USER }}
+        
         - uses: actions/checkout@v4
         - name: builds and pushes the container
           shell: powershell
           run: ./build.ps1 --dockerpush true
-          env:
-            DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-            DOCKER_USER: ${{ secrets.DOCKER_USER }}
