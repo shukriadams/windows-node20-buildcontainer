@@ -11,7 +11,7 @@ jobs:
         - uses: actions/checkout@v4
         - name: builds and pushes the container
           shell: powershell
-          run: ./build.ps1 --dockerpush
+          run: ./build.ps1 --dockerpush true
           env:
             DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
             DOCKER_USER: ${{ secrets.DOCKER_USER }}
