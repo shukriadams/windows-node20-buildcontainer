@@ -1,0 +1,17 @@
+name: builds 
+on: 
+  push:
+    tags:
+      - '*'
+      
+jobs:
+    build:
+        runs-on: windows-latest
+        steps:
+        - uses: actions/checkout@v4
+        - name: builds and pushes the container
+          shell: powershell
+          run: ./build.ps1 --dockerpush
+          env:
+            DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+            DOCKER_USER: ${{ secrets.DOCKER_USER }}
