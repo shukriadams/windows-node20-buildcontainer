@@ -8,7 +8,7 @@ $ErrorActionPreference = "Stop"
 docker build -t shukriadams/windows-node20-build .
 Write-Host "container built"
 
-if ($dockerpush -eq "true"){
+
     Write-Host "starting docker push"
     Set-Variable -Name TAG -Value (git describe --tags --abbrev=0)
     
@@ -23,4 +23,4 @@ if ($dockerpush -eq "true"){
     docker login -u $DOCKER_USER -p $DOCKER_PASS 
     docker push shukriadams/windows-node20-build:$TAG 
     Write-Host "container push complete"    
-}
+
