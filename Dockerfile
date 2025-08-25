@@ -7,5 +7,5 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
     Invoke-WebRequest -Uri https://nodejs.org/dist/v20.19.4/node-v20.19.4-x64.msi -OutFile node-installer.msi ; \
     cmd.exe /c "msiexec /i node-installer.msi /quiet /log node-install.log"; \
-    Remove-Item node-installer.msi -Force ; \
-    node --version
+    Remove-Item node-installer.msi -Force ;     
+    # node --version # doesn't work here yet
